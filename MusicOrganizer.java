@@ -7,6 +7,9 @@ import java.util.ArrayList;
  * @version 2016.02.29
  */
 public class MusicOrganizer
+//28. for (Track track : tracks){ }
+
+    
 {
     // An ArrayList for storing the file names of music files.
     private ArrayList<String> files;
@@ -46,9 +49,11 @@ public class MusicOrganizer
      */
     public void listFile(int index)
     {
+    
         if(validIndex(index)) {
             String filename = files.get(index);
             System.out.println(filename);
+            
         }
     }
     
@@ -57,8 +62,11 @@ public class MusicOrganizer
      */
     public void listAllFiles()
     {
+        int position = 0; 
         for(String filename : files) {
-            System.out.println(filename);
+            // The following modification is the answer for question 24.
+            System.out.println(position + ":"+filename);
+            position++;
         }
     }
     
@@ -131,4 +139,123 @@ public class MusicOrganizer
         }
         return valid;
     }
+    /**
+     * List the names of files matching the given search string.
+     * @param searchString The string to match.
+     */
+    public void listMatching(String searchString) {
+        for (String filename : files) {
+            if (filename.contains(searchString)) {
+                // A match.
+                System.out.println(filename);
+            
+            }//25. Nothing is printed if there's no match 
+            else { 
+                //26. 
+                System.out.println("No file names matches the search string"); 
+        }  
+    }
 }
+}
+/*27. I dont think this is right?
+public void playSamplesByArtist(String artist) {
+    for (String filename : files) {
+        if (filename.contains(artist)) {
+             try {
+            setupPlayer(filename);
+            player.play(500);
+        }
+        catch(JavaLayerException e) {
+            reportProblem(filename);
+        }
+        finally {
+            killPlayer();
+        }
+        }
+    }
+}
+}
+*/
+/* 29. boolean found = false 
+ * while (found) {
+ *     if (the keys are in the next place) {
+ *         found = true; 
+ *         }
+ *         }
+ }
+ */
+/*30. public void multiplesOfFive() {
+/*    int number = 10; 
+ * while (number >= 95){ 
+ * Sytem.out.println(number); 
+ * number +=5;
+ * }
+ * }
+ * 
+ * 31. 
+ * int sum = 0; 
+ * ing number = 1;
+ * while (number >=10) {
+ *     sum+= number;
+ *     number++; 
+ *     }
+ *     System.out.println("Sum:"+sum); 
+ */
+/* 32. public int sum(int a, b){ 
+/*    int number;
+ * int sum = 0;
+ *
+ * while(number>a && number <b) {
+ *     sum+=number;
+ *     number++
+ *     }
+ *     return sum; 
+ }
+ * 
+ */
+/*  33. public boolean isPrime(int n) {
+    if (n < 2) {
+        return false; 
+    }
+
+    for (int i = 2; i < n; i++) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+
+    return true; 
+ }
+ */
+/* 34. 
+ * public int findFirst(String searchString)
+    {
+        int index = 0;
+        // Record that we will be searching until a match is found.
+        int fileCount = files.size(); 
+        boolean searching = true;
+
+        while(searching && index < filesCount()) {
+            String filename = files.get(index);
+            if(filename.contains(searchString)) {
+                // A match. We can stop searching.
+                searching = false;
+            }
+            else {
+                // Move on.
+                index++;
+            }
+        }
+        if(searching) {
+            // We didn't find it.
+            return -1;
+        }
+        else {
+            // Return where it was found.
+            return index;
+        }
+    }
+ * 
+ */
+
+
